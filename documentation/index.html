@@ -1,0 +1,288 @@
+<!-- author : Prakash Chokalingam 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tags Plugin</title>
+	<!-- css files -->
+	<script type="text/javascript" src="js/jquery.js"></script>
+
+	<!-- bootstrap -->
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<!-- tagsplugin css -->
+	<link rel="stylesheet" type="text/css" href="css/tags-plugin.css">
+	<style type="text/css">
+		.jumbotron
+		{padding: 0px}
+		ul li{list-style-type: none;}
+		ul .x li{list-style:disc;}
+		.left{border-right: 1px solid black;}
+		.blue{color: blue}</style>
+	</head>
+	<body class="jumbotron">
+		<center>
+			<h1>Tags Plugin</h1>
+			<p>Tags Plugin is a dynamic  bootstrap plugin.With more options and customizable css.You can customize this whole plugin to your need .</p>
+		</center>
+		<div class="row">
+			<div class="col-md-2 left">
+				<div class="center">
+
+					<ul>
+						<h3>Contents</h3>
+						<li><a href="#requirements"><h3>Requirements</h3></a></li>
+					</ul>
+					<ul>
+						<li><a href="#usage"><h3>Usage</h3></a></li>
+					</ul>
+					<ul>
+						<li><a href="#options"><h3>Options</h3></a></li>
+						<ul class="x">
+							<li><a href="#url"><h3>url</h3></a></li>
+							<li><a href="#method"><h3>method</h3></a></li>
+							<li><a href="#call"><h3>call</h3></a></li>
+							<li><a href="#data"><h3>data</h3></a></li>
+							<li><a href="#return"><h3>return_val</h3></a></li>
+							<li><a href="#image"><h3>image</h3></a></li>
+							<li><a href="#strict"><h3>strict</h3></a></li>
+							<li><a href="#repeat"><h3>repeat</h3></a></li>
+							<li><a href="#existing"><h3>existing_val</h3></a></li>
+							<li><a href="#nomatch"><h3>nomatch</h3></a></li>
+
+						</ul>
+					</ul>
+					<ul>
+						<li><a href="#json"><h3>Json Format</h3></a></li>
+					</ul>
+					
+				</div>
+			</div>
+			<div class="col-md-8 col-md-offset-1">
+				<h3 id="requirements"><u>Requirements : </u></h3>
+				<p>
+					* jquery(Required)<br>
+					* Server (for ajax calls)<br>
+					* bootstrap(Optional)<br>
+				</p>
+				<h3 id="usage"><u>Usage : </u></h3>
+				<form method="post" action="test.php">
+				<input type="text" name="tags" id="tag">
+				<input type="submit">
+				</form>
+				<p>Simple to implement.</p>
+				<p>An Input field with an "id".<br>
+					<code>
+						&lt;input type="text" name="tags" id="tags"&gt;
+					</code>
+				</p>
+				<p>Scripts to trigger.<br>
+					<code>&lt;script&gt;<br>
+						$("#tags").tags({<br>
+						url:"browsers.json",<br>
+						<span class="blue">/* some optional options */</span><br>
+						method:"post",<br>
+						data:{"_token":"xyz"},<br>
+						call:"prefetch",<br>
+						return_val:"id",<br>
+						image:true,<br>
+						strict:false,<br>
+						existing_val:[{"id":"2","image":"images/firefox.gif","tag":"firefox"},{"id":"1","image":"images/chrome.gif","tag":"chrome"}],
+						repeat:true,<br>
+						nomatch:"press comma to proceed !",<br>
+					});<br>
+					&lt;script&gt;</code></p>
+
+
+					<h3 id="options"><u>Options : </u></h3>
+					<br>
+					<h4 id="url"><strong><u>url</u> :</strong></h4>
+					<p>url argument takes the url which return the json data.And Url is a required element,if url is not valid or failed to pass as an sarugument a Javascript alert will be thrown.</p>
+					<br>
+					<h4 id="method"><strong><u>method</u> :</strong></h4>
+					<p>method option takes the <b>http</b> method type of the above given url.</p>
+					<p><strong>Default : "get" method</strong></p>
+					<p><i>Usage :</i></p>
+					<p><code>&lt;script&gt;<br>
+						$("#tags").tags({<br>
+						url: "someurl",<br>
+						<span class="blue">method:"get" (or) method:"post" ,</span><br>
+						call:"prefetch",<br>
+					});<br>
+					&lt;/script&gt;
+				</code></p>
+				<br>
+				<h4 id="call"><strong><u>call</u> :</strong></h4>
+				<p>call options states the way of communication with the given url whether it should be frequently or Once.</p>
+				<p>The two types of Calls are<br>prefetch<br>remote</p>
+				<h3>prefetch : </h3>
+				<p>prefetch loads the required data once in your page.</p>
+				<h3>remote : </h3>
+				<p>remote loads the url whenever the user enter data into the input field.And the user input value will be send to the server as "q" variable.<br>
+					<small>(For example an user enter "hello" into input field in remote call, he can get the user entered variable as "q=hello")</small></p>
+					<p><strong>Default : "prefetch"</strong></p>
+					<p><i>Usage :</i></p>
+					<p><code>&lt;script&gt;<br>
+						$("#tags").tags({<br>
+						url: "someurl",<br>
+						method:"get",<br>
+						<span class="blue">call:"prefetch", or call:"remote"</span><br>
+					});<br>
+					&lt;/script&gt;
+				</code></p>
+				<br>
+				<h4 id="data"><strong><u>data</u> :</strong></h4>
+				<p>data holds some json data to be send along with the given url request.</p>
+				<p><i>Usage :</i></p>
+				<p><code>&lt;script&gt;<br>
+					$("#tags").tags({<br>
+					url: "someurl",<br>
+					method:"post" ,<br>
+					call:"prefetch",<br>
+					<span class="blue">data:{token:"xyz"}</span><br>
+				});<br>
+				&lt;/script&gt;
+			</code></p>
+			<br>
+			<h4 id="return"><strong><u>return_val</u> :</strong></h4>
+			<p>return val carries the data to be returned as value.</p>
+			<p><strong>Default : "id"</strong></p>
+			<p><i>Usage :</i></p>
+			<p>someurl.json :<br>
+				<code>[{"id":1,"image":"test.jpg","<span class="blue">tag</span>":"text"},{"id":2,"image":"test2.jpg","<span class="blue">tag</span>":"text2"}]</code></p>
+				<p><code>&lt;script&gt;<br>
+					$("#tags").tags({<br>
+					url: "someurl.json",<br>
+					method:"get",<br>
+					call:"prefetch",<br>
+					<span class="blue">return_val:"tag",</span><br>
+
+				});<br>
+				&lt;/script&gt;
+			</code></p>
+			<p>Output :<br>
+				<code>value="text","text2"</code></p>
+				<br>
+				
+			<h4 id="image"><strong><u>image</u> :</strong></h4>
+			<p>image is the boolean option.If "true" it will show images in both suggestions and tags.</p>
+			<p><strong>Default : "false"</strong></p>
+
+			<p><i>Usage :</i></p>
+			<p><code>&lt;script&gt;<br>
+				$("#tags").tags({<br>
+				url: "someurl",<br>
+				method:"post" ,<br>
+				call:"prefetch",<br>
+				data:{token:"xyz"},<br>
+				<span class="blue">image:true, (or) image:false</span><br>
+			});<br>
+			&lt;/script&gt;
+		</code></p>
+		<br>
+		<h4 id="strict"><strong><u>strict</u> :</strong></h4>
+		<p>image is also boolean option.If "true" ,it  allows user to add their own tags bye pressing comma(,) rather from url contents.</p>
+		<p><strong>Default : "false"</strong></p>
+
+		<p><i>Usage :</i></p>
+		<p><code>&lt;script&gt;<br>
+			$("#tags").tags({<br>
+			url: "someurl",<br>
+			method:"post" ,<br>
+			call:"prefetch",<br>
+			data:{token:"xyz"},<br>
+			image:true,<br>
+			<span class="blue">strict:true,</span><br>
+			return_val:"id",
+		});<br>
+		&lt;/script&gt;
+	</code></p>
+	<br>
+		<h4 id="repeat"><strong><u>repeat</u> :</strong></h4>
+		<p>image is also a boolean option.If "true" ,it  allows user to add same tags again and again.</p>
+		<p><strong>Default : "false"</strong></p>
+
+		<p><i>Usage :</i></p>
+		<p><code>&lt;script&gt;<br>
+			$("#tags").tags({<br>
+			url: "someurl",<br>
+			method:"post" ,<br>
+			call:"prefetch",<br>
+			data:{token:"xyz"},<br>
+			image:true,<br>
+			strict:true,<br>
+			<span class="blue">repeat:true, (or) repeat:false,</span><br>
+			return_val:"id",
+		});<br>
+		&lt;/script&gt;
+	</code></p>
+	<br>
+	<h4 id="existing"><strong><u>existing</u> :</strong></h4>
+	<p>existing_val holds the json data,which should be loaded as exisiting value in input.</p>
+	<p><i>Usage :</i></p>
+	<p><code>&lt;script&gt;<br>
+		$("#tags").tags({<br>
+		url: "someurl",<br>
+		method:"post" ,<br>
+		call:"prefetch",<br>
+		data:{token:"xyz"},<br>
+		image:true,<br>
+		strict:true, <br>
+		<span class="blue">existing_val:[{"<span class="blue">id</span>":1,"image":"test.jpg","tag":"text"}],</span><br>
+		return_val:"<span class="blue">id</span>",<br>
+	});<br>
+	&lt;/script&gt;
+</code></p>
+<p>Output(while loading of page itself) :<br>
+	<code>value="1"</code></p>
+	<br>
+	<h4 id="nomatch"><strong><u>nomatch</u> :</strong></h4>
+	<p>nomatch carries the error data to be shown if there is nomatch between user given data and json data.</p>
+	<p><strong> Deafult : "No match Found"</strong></p>
+	<p><i>Usage :</i></p>
+	<p><code>&lt;script&gt;<br>
+		$("#tags").tags({<br>
+		url: "someurl",<br>
+		method:"post" ,<br>
+		call:"prefetch",<br>
+		data:{token:"xyz"},<br>
+		image:true,<br>
+		strict:true, <br>
+		<span class="blue">nomatch:"press comma to add new",</span><br>
+
+	});<br>
+	&lt;/script&gt;
+</code></p>
+
+<br>
+<h3 id="json"><u>Json Format : </u></h3>
+<p>Please provide the response as the following json format for proper execution</p>
+
+<p><h3>Image : true<br><code>[{"id":1,"image":"test.jpg","tag":"text"},{"id":2,"image":"test2.jpg","tag":"text2"}]</code></p>
+<p><h3>Image : false<br><code>[{"id":1,"tag":"text"},{"id":2,"tag":"text2"}]</code></p>
+</div>
+</div>
+<!-- javascript files -->
+<!-- tags plugin -->
+<script type="text/javascript" src="js/tags-plugin.js"></script>
+<script type="text/javascript">
+	$("#tag").tags({
+		url:"browsers.json",
+		method:"post",
+		data:{"_token":"xyz"},
+		call:"prefetch",
+		return_val:"id",
+		image:true,
+		strict:false,
+		existing_val:[{"id":"2","image":"images/firefox.gif","tag":"firefox"},{"id":"1","image":"images/chrome.gif","tag":"chrome"}],
+		repeat:true,
+		nomatch:"press comma to proceed !",
+
+	});
+</script>
+<footer>
+<br>
+<br>
+	<center>Plugin by : <a href="https://sites.google.com/site/prakashchokalingam/" target="_blank">Prakash Chokalingam</a></center>
+</footer>
+</body>
+</html>

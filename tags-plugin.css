@@ -1,0 +1,68 @@
+/*
+author:Prakash Chokalingam,
+site:www.bit.ly/prakashchokalingam,
+belongs:http://github.com/prakashchokalingam/tags-plugin;
+*/
+
+
+/*whole container*/
+.th{
+	border: 1px solid #6899FF;
+	background: rgba(104, 153, 255, 0.31);
+	padding:10px;
+}
+/*popup box*/
+.tr
+{
+	position: relative;
+	top:0px;
+	box-shadow: 1px 1px 1px grey;
+	max-height:200px;
+	overflow: auto;
+}
+/*inside popup*/
+.tr li
+{
+	list-style-type: none;
+	padding: 5px;
+	font-size: 30px;
+	cursor: pointer;
+	text-align: left;
+}
+/*result on hover*/
+.tr li:hover
+{
+	background: #CDCCFD;
+}
+/*image in suggesstions*/
+.tr li img
+{
+	/*none*/
+}
+/*tags*/
+.tagglets
+{
+	padding: 5px;
+	border-radius: 4px;
+	background: #0069FC;
+	color:white !important;
+	float: left;
+	margin:3px;
+	cursor: pointer;
+}
+/*on mouseover*/
+.tagglets:hover
+{
+	border: 1px solid #0032CC;
+}
+/*image inside tags*/
+.tagglets img
+{
+/*none*/
+}
+/*close menu*/
+.tagglets .close
+{
+	color: white !important;
+	text-align: center;
+}
